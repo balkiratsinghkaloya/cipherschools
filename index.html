@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <meta charset="utf-8">
+    <link rel="stylesheet" lang="text/css" href="style.css">
+    <head>
+        <title>Password Strength Checker</title>
+    </head>
+    <body style="background-color:rgb(241, 232, 232)">
+        <div class="overlay" align="center">
+        <h1 class="h1">Password Strength Checker</h1>
+        <form class="form" onsubmit="passwordStrengthCheck(); return false">
+            <label for ="passwordStrengthCheck" style="color:rgb(239, 0, 0);">Please Enter a password to check Strength</label>
+            <input type="password" id="password" name="password" placeholder="Enter your password here" 
+             class="input"
+               required>
+            <button type="submit"
+            class="button">Check Password Strength
+        </button>
+            <p id="strength" style="color:rgb(239, 0, 0);"></p>
+            <p id="hash" style="color:rgb(239, 0, 0);"></p>
+        </form>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+            <script type="text/javascript">
+                function passwordStrengthCheck() {
+                    const password = document.getElementById("password").value;
+                    let strength = 'Very Weak';
+                    let criteria_met =0;
+                    if(password.length >= 8) criteria_met++;
+                    if(/[A-Z]/.test(password)) criteria_met++;
+                    if(/[a-z]/.test(password)) criteria_met++;
+                    if(/[0-9]/.test(password)) criteria_met++;
+                    if(/[\W_]/.test(password)) criteria_met++;
+
+                    switch(criteria_met) {
+                        case 5:
+                            strength = 'Very Strong';
+                            break;
+                        case 4:
+                            strength = 'Strong';
+                            break;
+                        case 3:
+                            strength = 'Medium';
+                            break;
+                        case 2:
+                            strength = 'Weak';
+                            break;
+                        default:
+                            strength = 'Very Weak';
+    
+                }
+
+                //Display password strength
+                document.getElementById("strength").innerText = "Password Strength: " + strength;
+                
+                //Hash the password using SHA-256
+                const hashedPassword = CryptoJS.SHA256(password).toString();
+                document.getElementById("strength").innerText += "\nHashed Password: " + hashedPassword;            
+        }
+                
+            </script>
+        
+        </div>
+    </body>
+</html>

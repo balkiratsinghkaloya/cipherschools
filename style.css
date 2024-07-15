@@ -1,0 +1,43 @@
+*{
+    margin:0;
+    padding: 0;
+    
+}
+.overlay{
+    width: 100vmax;
+    height:100vh;
+    font-size: 20px;
+    font-style: normal;
+    color:rgb(85, 184, 28);
+    position: relative;
+    display: flex;
+    justify-content: top ;
+    flex-direction: column;
+    align-items: center;
+    overflow: scroll;
+}
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+.input{
+    width: max-content;
+    padding: 10px; 
+    font-size: 14px;
+    font-family: Arial, Helvetica, sans-serif;
+    border: 2px solid ;
+}
+.button{
+    border: 1px solid;
+    height: 20px;
+    width:200px;
+}
+.h1{
+    color:rgb(17, 17, 10);
+    margin-top: 50px; 
+    margin-bottom: 30px; 
+    font-family: Arial, Helvetica, sans-serif;
+}
